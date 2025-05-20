@@ -25,4 +25,4 @@ find the assignment questions below
 - Remove the last movie from the list and print the final array.
 
 
-**First 3 Assignments to be run by linking js file on html page. 4th and 5th to be run on nodejs console.**
+***First 3 Assignments to be run by linking js file on html page. 4th and 5th to be run on nodejs console.***

@@ -9,3 +9,17 @@ Learn the below mentioned topics
 4.Control Flow
 5.Loops
 6.Functions
+
+### Assignments to try
+
+Team,
+find the assignment questions below
+1. Simple Calculator using prompt() and if/else
+2. Guess the Number Game using while and Math.random()
+3. Palindrome Checker Function
+4. To-Do List in Console using arrays
+5. Create an array of 5 favorite movies. Then, write a program to:
+- Print the total number of movies in the array.
+- Log the movie at the third index (4th position).
+- Add one more movie to the array and print the updated list.
+- Remove the last movie from the list and print the final array.

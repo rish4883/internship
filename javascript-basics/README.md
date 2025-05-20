@@ -23,3 +23,6 @@ find the assignment questions below
 - Log the movie at the third index (4th position).
 - Add one more movie to the array and print the updated list.
 - Remove the last movie from the list and print the final array.
+
+
+**First 3 Assignments to be run by linking js file on html page. 4th and 5th to be run on nodejs console.**

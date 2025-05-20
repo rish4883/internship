@@ -54,3 +54,15 @@ section h3 {
     display: flex;
     gap: 200px;
 }
+
+/* ********************************************************************* */
+
+.education div {
+    flex-grow: 1;
+}
+
+.education ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* justify-content:end; */
+}

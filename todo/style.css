@@ -32,3 +32,26 @@ h1 {
 
 /* ******************************************************** */
 
+
+.taskList {
+    padding: 30px 0px;
+}
+
+.taskList .task {
+    display: flex;
+    border-bottom: 1px solid black;
+    /* padding-left: 12px;
+    padding-right: 25px; */
+    padding: 10px 25px 10px 12px;
+    justify-content: space-between;
+    font-family: sans-serif;
+}
+
+.task button {
+    border-radius: 50%;
+    border: 0;
+    background-color: rgb(25, 151, 98);
+    color: rgb(55, 47, 47);
+}
+
+/* ******************************************************** */

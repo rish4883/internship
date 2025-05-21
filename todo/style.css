@@ -1,0 +1,33 @@
+body > div {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+h1 {
+    color: darkslategrey;
+}
+
+/* ******************************************************** */
+.input {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.input input{
+    width: 500px;
+    height: 35px;
+    border-radius: 10px;
+    border: 2px solid rgb(86, 82, 82);
+    padding-left: 10px;
+}
+
+.input button {
+    background-color: rgb(16, 72, 49);
+    padding: 12px 30px;
+    color: white;
+    border-radius: 20px;
+    border: 0;
+}
+
+/* ******************************************************** */

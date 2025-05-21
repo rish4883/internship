@@ -8,10 +8,11 @@ function addNewTask(taskDetails) {
 
     const text = document.createElement("div")
     text.textContent = taskDetails
-
+    // create a button for each task which removes itself when clicked
     const btn = document.createElement("button")
     btn.textContent = "x"
     btn.className = "remove"
+    btn.addEventListener("click", removeTask)
 
     task.appendChild(text)
     task.appendChild(btn)
@@ -27,3 +28,10 @@ addBtn.addEventListener("click", () => {
     addNewTask(newTask)
     input.value = ''
 })
+
+// to remove the button from the list
+function removeTask(event) {
+    const taskToRemove = event.target.parentElement
+    // const taskList = document.querySelector('.taskList')
+    taskToRemove.remove()
+}

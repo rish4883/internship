@@ -21,16 +21,17 @@
 
 // Write program to shift last k array elements to the first (array rotation)
 
-function shitftArr(k, arr) {
-    if (k > arr.length) {
-        return arr
-    } 
-    return arr.splice(arr.length - k).concat(arr)
-}
+// function shitftArr(k, arr) {
+//     if (k > arr.length) {
+//         return arr
+//     } 
+//     return arr.splice(arr.length - k).concat(arr)
+// }
 
-let arr = [10, 20, 30, 40, 50, 60] 
+// let arr = [10, 20, 30, 40, 50, 60] 
 
-console.log(shitftArr(2, arr));
+// console.log(shitftArr(2, arr));
 
 // ********************************************************************************************************
+
 

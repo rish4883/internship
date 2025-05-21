@@ -1,6 +1,6 @@
 ## Javascript Basics
 
-### Learning Objectves:-
+### Learning Objectves [20-05-2025]:-
 
 Learn the below mentioned topics
 1. Introduction to JavaScript
@@ -26,3 +26,17 @@ find the assignment questions below
 
 
 ***First 3 Assignments to be run by linking js file on html page. 4th and 5th to be run on nodejs console.***
+
+
+### Learning Objectives [21-05-2025]:-
+
+Good morning team
+Topics to learn:
+1. Quick recap of yesterday's learnings 
+2. Arrays & Objects
+Define arrays, access elements, loop through arrays. Objects and key-value pairs
+3. Array Methods
+push, pop, shift, unshift, map, filter, forEach
+4. Object Methods
+Creating objects, accessing/modifying properties, nested objects
+5. Arrays & Objects deep dive, Basic DOM manipulation

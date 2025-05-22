@@ -9,3 +9,8 @@ The work for this is in the resume directory
 The work for this is in the javascript-basics directory
  
 The branches have not been merged yet as its still WIP
+
+
+
+### Branches merged on 22nd may - project/todo app and learn/js
+

@@ -15,6 +15,70 @@
         "electronics": "50",
         "mechanical": "60"
       }
+    },
+    {
+      "id": "a4fb",
+      "fName": "pras",
+      "lName": "sty",
+      "srn": "123213",
+      "email": "1124@gmail.com",
+      "department": "ece",
+      "marks": {
+        "math": "12",
+        "chem": "43",
+        "kannada": "12",
+        "iot": "12",
+        "electronics": "3",
+        "mechanical": "4"
+      }
+    },
+    {
+      "id": "3ea7",
+      "fName": "asdf",
+      "lName": "asdf",
+      "srn": "32a",
+      "email": "asd2@gmail.com",
+      "department": "cse",
+      "marks": {
+        "math": "12",
+        "chem": "34",
+        "kannada": "5",
+        "iot": "25",
+        "electronics": "24",
+        "mechanical": "42"
+      }
+    },
+    {
+      "id": "e444",
+      "fName": "RRR",
+      "lName": "ah",
+      "srn": "23213123",
+      "email": "ri@gm.com",
+      "department": "civil",
+      "marks": {
+        "math": "22",
+        "chem": "33",
+        "kannada": "11",
+        "iot": "44",
+        "electronics": "55",
+        "mechanical": "66"
+      }
+    },
+    {
+      "id": "f65c",
+      "fName": "asdfsd",
+      "lName": "addfads",
+      "srn": "sddds",
+      "email": "rr@gmail.com",
+      "department": "eee",
+      "marks": {
+        "math": "12",
+        "chem": "2",
+        "kannada": "45",
+        "iot": "99",
+        "electronics": "99",
+        "mechanical": "99"
+      }
     }
   ]
 }

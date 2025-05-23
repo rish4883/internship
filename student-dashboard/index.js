@@ -1,11 +1,45 @@
 const baseUrl = "http://localhost:3001/students"
 
 const form = document.getElementById("student-form");
+let editId = null;
 
 form.addEventListener("submit", handleSubmit);
+loadStudents();
+function loadStudents() {
+    axios.get(baseUrl).then(response => {
+        const students = response.data;
+        const tbody = document.querySelector(".student-table tbody");
+        tbody.innerHTML = "";
+        
+        students.forEach((student) => {
+            const row = document.createElement("tr");
+            const {marks} = student;
+            let total =  +marks.math+ +marks.chem+ +marks.kannada+ +marks.iot+ +marks.electronics+ +marks.mechanical;
+            console.log(marks);
+            
+            let percentage = total / 6;
+            let sgpa = Math.round(percentage) / 10;
+            row.innerHTML = `
+                <td>${student.srn}</td>
+                <td>${student.fName} ${student.lName}</td>
+                <td>${student.department.toUpperCase()}</td>
+                <td>${marks.math}</td>
+                <td>${marks.chem}</td>
+                <td>${marks.kannada}</td>
+                <td>${marks.iot}</td>
+                <td>${marks.electronics}</td>
+                <td>${marks.mechanical}</td>
+                <td>${Math.round(percentage*10)/10}</td>
+                <td>${sgpa}</td>
+            `;
+            tbody.appendChild(row);
+
+        })
+    })
+}
 
 function handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
 
     const student = {
         fName: document.getElementById("fName").value,
@@ -25,7 +59,9 @@ function handleSubmit(e) {
 
     axios.post(baseUrl, student).then((response) => {
         console.log(response);
-        window.location.reload();
+        loadStudents();
+        
+        // window.location.reload();
     })
     
 

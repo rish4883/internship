@@ -42,7 +42,7 @@ body {
 }
 
 .page-container {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     background-color: white;
     border-radius: 10px;
@@ -50,7 +50,10 @@ body {
 
 .form-container {
     padding: 40px;
+    margin: 0 auto;
     margin-bottom: 50px;
+    max-width: 1200px;
+    
 }
 
 .form-container h2 {
@@ -86,7 +89,7 @@ body {
     border: 2px solid #ddd;
     border-radius: 6px;
     font-size: 1em;
-    width: 100%;
+    width: 100%;    
 }
 /* 
 input {
@@ -141,7 +144,9 @@ input {
 }
 
 .table-section {
+    margin: 0 auto;
     margin-top: 50px;
+    max-width: 1200px;
 }
 
 .table-container {

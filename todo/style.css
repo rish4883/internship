@@ -8,6 +8,10 @@ h1 {
     color: darkslategrey;
 }
 
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
 /* ******************************************************** */
 .input {
     display: flex;
@@ -43,15 +47,50 @@ h1 {
     /* padding-left: 12px;
     padding-right: 25px; */
     padding: 10px 25px 10px 12px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     font-family: sans-serif;
 }
 
-.task button {
+.task .taskDetails {
+    flex-basis: 100%;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+
+.task i {
     border-radius: 50%;
+    padding: 5px 6px;
+    /* font-size: 16; */
     border: 0;
     background-color: rgb(25, 151, 98);
     color: rgb(55, 47, 47);
 }
 
+.task i:hover {
+    background-color: rgb(75, 206, 151);
+}
+
+.task .fa-pen {
+    font-size: 14px;
+    padding: 6px 6px;
+}
+
+.task .icons {
+    display: flex;
+    gap: 15px;
+ 
+}
+
+.task .fa-check {
+    background-color: gray;
+}
+
+.task .fa-check:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+input[type="checkbox"] {
+    accent-color: green;
+}
 /* ******************************************************** */

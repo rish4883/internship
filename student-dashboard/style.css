@@ -143,10 +143,19 @@ input {
     margin-top: 15px;
 }
 
+
+
+
+
+
+
+/* *****************************  My CSS  ********************************************* */
+
+/* 
 .table-section {
     margin: 0 auto;
     margin-top: 50px;
-    max-width: 1200px;
+    max-width: 1300px;
 }
 
 .table-container {
@@ -188,4 +197,216 @@ tbody tr:nth-child(even) {
 
 tbody tr:nth-child(even):hover {
     background-color: #f0f2ff;
-}
+} */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *****************************  AI CSS  ********************************************* */
+
+.table-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #2d3748;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid #4a5568;
+        }
+
+        .table-section h2 {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            color: #e2e8f0;
+            padding: 25px 30px;
+            margin: 0;
+            font-size: 24px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .table-container {
+            padding: 0;
+            overflow-x: auto;
+        }
+
+        .student-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #2d3748;
+        }
+
+        .student-table thead {
+            background: linear-gradient(135deg, #4a5568 0%, #718096 100%);
+        }
+
+        .student-table thead th {
+            padding: 18px 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #e2e8f0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 12px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            white-space: nowrap;
+        }
+
+        .student-table thead th:last-child {
+            border-right: none;
+        }
+
+        .student-table tbody tr {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #4a5568;
+        }
+
+        .student-table tbody tr:hover {
+            background-color: #374151;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .student-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .student-table tbody td {
+            padding: 16px 12px;
+            color: #e2e8f0;
+            font-weight: 500;
+            border-right: 1px solid #4a5568;
+            white-space: nowrap;
+        }
+
+        .student-table tbody td:last-child {
+            border-right: none;
+        }
+
+        .student-table tbody tr:nth-child(even) {
+            background-color: #374151;
+        }
+
+        .actions-column {
+            text-align: center;
+            min-width: 100px;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            margin: 0 4px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edit-btn {
+            color: #60a5fa;
+        }
+
+        .edit-btn:hover {
+            background-color: #1e3a8a;
+            color: #93c5fd;
+            transform: scale(1.1);
+        }
+
+        .delete-btn {
+            color: #f87171;
+        }
+
+        .delete-btn:hover {
+            background-color: #7f1d1d;
+            color: #fca5a5;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .table-section {
+                margin: 10px;
+                border-radius: 8px;
+            }
+
+            .table-section h2 {
+                padding: 20px;
+                font-size: 20px;
+            }
+
+            .student-table {
+                font-size: 12px;
+            }
+
+            .student-table thead th,
+            .student-table tbody td {
+                padding: 12px 8px;
+            }
+
+            .action-btn {
+                padding: 6px;
+                font-size: 14px;
+            }
+        }
+
+        /* Loading animation for future use */
+        .loading {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* Status indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-active {
+            background-color: #27ae60;
+        }
+
+        .status-inactive {
+            background-color: #e74c3c;
+        }
+
+        /* Custom scrollbar */
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: #4a5568;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: #718096;
+            border-radius: 4px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0;
+        }

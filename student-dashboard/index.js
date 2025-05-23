@@ -31,7 +31,32 @@ function loadStudents() {
                 <td>${marks.mechanical}</td>
                 <td>${Math.round(percentage*10)/10}</td>
                 <td>${sgpa}</td>
+                <td></td>   
             `;
+
+            // <td class="actions-column">
+            //         <button class="action-btn edit-btn" onclick="editStudent(${student.id})" title="Edit Record">
+            //             <i class="fas fa-edit"></i>
+            //         </button>
+            //         <button class="action-btn delete-btn" onclick="deleteStudent(${student.id})" title="Delete Record">
+            //             <i class="fas fa-trash"></i>
+            //         </button>
+            //     </td>
+            const editBtn = document.createElement("button");
+            editBtn.className = "action-btn edit-btn";
+            // editBtn.textContent = "Edit";
+            editBtn.innerHTML = '<i class="fas fa-edit"></i>';
+            editBtn.addEventListener("click", () => editStudent(student.id));
+
+            const deleteBtn = document.createElement("button");
+            // deleteBtn.textContent = "Delete";
+            deleteBtn.className = "action-btn delete-btn";
+            deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+            deleteBtn.addEventListener("click", () => deleteStudent(student.id));
+
+                  row.lastElementChild.appendChild(editBtn);
+      row.lastElementChild.appendChild(deleteBtn);
+      
             tbody.appendChild(row);
 
         })
@@ -57,7 +82,15 @@ function handleSubmit(e) {
         }
     };
 
-    axios.post(baseUrl, student).then((response) => {
+    const request = editId ?
+    axios.put(`${baseUrl}/${editId}`, student):
+    axios.post(baseUrl, student);
+
+
+    request.then((response) => {
+        editId = null;
+        form.reset();
+        document.querySelector("button[type='submit']").textContent = "Submit";
         console.log(response);
         loadStudents();
         
@@ -65,4 +98,31 @@ function handleSubmit(e) {
     })
     
 
+}
+
+function editStudent(id) {
+    axios.get(`${baseUrl}/${id}`).then(res => {
+        const student = res.data;
+        document.getElementById("lName").value = student.fName;
+        document.getElementById("fName").value = student.lName;
+        document.getElementById("srn").value = student.srn;
+        document.getElementById("email").value = student.email;
+        document.getElementById("department").value = student.department;
+        document.getElementById("math").value = student.marks.math;
+        document.getElementById("chem").value = student.marks.chem;
+        document.getElementById("kannada").value = student.marks.kannada;
+        document.getElementById("iot").value = student.marks.iot;
+        document.getElementById("electronics").value = student.marks.electronics;
+        document.getElementById("mechanical").value = student.marks.mechanical;
+
+        document.querySelector("button[type='submit']").textContent = "Update";
+
+        editId = id;
+        
+        document.querySelector(".form-container").scrollIntoView({ behavior: "smooth" });
+    });
+}
+
+function deleteStudent(id) {
+  axios.delete(`${baseUrl}/${id}`).then(() => loadStudents());
 }

@@ -6,6 +6,78 @@
     <title>Student Dashboard</title>
 </head>
 <body>
-    
+    <div>
+        <div class="heading">
+            <h1>Student Management System</h1>
+            <p>Manage student records and analyse academic performaance</p>
+        </div>
+
+        <div class="form-container">
+            <h2>Add New Student</h2>
+            <form id="student-form">
+                <div class="form-field">
+                    <label for="fName">First Name</label>
+                    <input type="text" name="fName" id="fName">
+                </div>
+                <div class="form-field">
+                    <label for="lName">Last Name</label>
+                    <input type="text" name="lName" id="lName">
+                </div>
+                <div class="form-field">
+                    <label for="srn">ID Number</label>
+                    <input type="text" name="srn" id="srn">
+                </div>
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-field">
+                    <label for="department">Department</label>
+                    <select name="department" id="department">
+                        <option value="">Select Department</option>
+                        <option value="cse">CSE</option>
+                        <option value="ece">ECE</option>
+                        <option value="eee">EEE</option>
+                        <option value="civil">Civil</option>
+                        <option value="mechanical">Mechanical</option>
+                        <option value="electrical">Electrical</option>
+                    </select>
+                </div>
+                <div class="subject-grid">
+                    <h4>Subject Marks</h3>
+                    <div class="form-field">
+                        <label for="math">Math-1</label>
+                        <input type="number" name="math" id="math" min="0" max="100" placeholder="">
+                    </div>
+                    <div class="form-field">
+                        <label for="chem">Engineering Chemistry</label>
+                        <input type="number" name="chem" id="chem" min="0" max="100" placeholder="">
+                    </div>
+                    <div class="form-field">
+                        <label for="kannada">Kannada</label>
+                        <input type="number" name="kannada" id="kannada" min="0" max="100" placeholder="">
+                    </div>
+                    <div class="form-field">
+                        <label for="iot">IoT</label>
+                        <input type="number" name="iot" id="iot" min="0" max="100" placeholder="">
+                    </div>
+                    <div class="form-field">
+                        <label for="electronics">Basic Electronics</label>
+                        <input type="number" name="electronics" id="electronics" min="0" max="100" placeholder="">
+                    </div>
+                    <div class="form-field">
+                        <label for="mechanical">Mechanical</label>
+                        <input type="number" name="mechanical" id="mechanical" min="0" max="100" placeholder="">
+                    </div>
+                    <button type="submit" class="sub-btn"> Add Student</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h2>Student Records</h2>
+            <table></table>
+        </div>
+    </div>
 </body>
 </html>

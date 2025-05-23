@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./index.js" defer></script>
 </head>
 <body>
-    <div>
+    <div class="page-container">
         <div class="heading">
             <h1>Student Management System</h1>
-            <p>Manage student records and analyse academic performaance</p>
+            <p>Manage 2nd semester student records and analyse academic performaance</p>
         </div>
 
         <div class="form-container">
@@ -43,40 +46,78 @@
                         <option value="electrical">Electrical</option>
                     </select>
                 </div>
-                <div class="subject-grid">
+                <div class="subject-section">
                     <h4>Subject Marks</h3>
-                    <div class="form-field">
-                        <label for="math">Math-1</label>
-                        <input type="number" name="math" id="math" min="0" max="100" placeholder="">
+                    <div class="subject-grid">
+                        <div class="form-field">
+                            <label for="math">Math-1</label>
+                            <input type="number" name="math" id="math" min="0" max="100" placeholder="">
+                        </div>
+                        <div class="form-field">
+                            <label for="chem">Engineering Chemistry</label>
+                            <input type="number" name="chem" id="chem" min="0" max="100" placeholder="">
+                        </div>
+                        <div class="form-field">
+                            <label for="kannada">Kannada</label>
+                            <input type="number" name="kannada" id="kannada" min="0" max="100" placeholder="">
+                        </div>
+                        <div class="form-field">
+                            <label for="iot">IoT</label>
+                            <input type="number" name="iot" id="iot" min="0" max="100" placeholder="">
+                        </div>
+                        <div class="form-field">
+                            <label for="electronics">Basic Electronics</label>
+                            <input type="number" name="electronics" id="electronics" min="0" max="100" placeholder="">
+                        </div>
+                        <div class="form-field">
+                            <label for="mechanical">Mechanical</label>
+                            <input type="number" name="mechanical" id="mechanical" min="0" max="100" placeholder="">
+                        </div>
+                        
                     </div>
-                    <div class="form-field">
-                        <label for="chem">Engineering Chemistry</label>
-                        <input type="number" name="chem" id="chem" min="0" max="100" placeholder="">
-                    </div>
-                    <div class="form-field">
-                        <label for="kannada">Kannada</label>
-                        <input type="number" name="kannada" id="kannada" min="0" max="100" placeholder="">
-                    </div>
-                    <div class="form-field">
-                        <label for="iot">IoT</label>
-                        <input type="number" name="iot" id="iot" min="0" max="100" placeholder="">
-                    </div>
-                    <div class="form-field">
-                        <label for="electronics">Basic Electronics</label>
-                        <input type="number" name="electronics" id="electronics" min="0" max="100" placeholder="">
-                    </div>
-                    <div class="form-field">
-                        <label for="mechanical">Mechanical</label>
-                        <input type="number" name="mechanical" id="mechanical" min="0" max="100" placeholder="">
-                    </div>
-                    <button type="submit" class="sub-btn"> Add Student</button>
                 </div>
+                <button type="submit" class="sub-btn"> Add Student</button>
             </form>
         </div>
 
-        <div class="table-container">
+        <div class="table-section">
             <h2>Student Records</h2>
-            <table></table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>SRN</th>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>Math</th>
+                            <th>Engineering Chemistry</th>
+                            <th>Kannada</th>
+                            <th>IoT</th>
+                            <th>Electronics</th>
+                            <th>Mechanical</th>
+                            <th>Percentage</th>
+                            <th>SGPA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SRN</td>
+                            <td>Name</td>
+                            <td>Department</td>
+                            <td>Email</td>
+                            <td>Math</td>
+                            <td>Engineering Chemistry</td>
+                            <td>Kannada</td>
+                            <td>IoT</td>
+                            <td>Electronics</td>
+                            <td>Mechanical</td>
+                            <td>Percentage</td>
+                            <td>SGPA</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>

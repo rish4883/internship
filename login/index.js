@@ -84,5 +84,23 @@ function createAccountForm() {
 }
 
 
+function register(e) {
+  e.preventDefault;
+  const loginCard = document.querySelector('.login-card');
+  let username = document.getElementById("new-username").value;
+  let email = document.getElementById("new-email").value;
+  let password = document.getElementById("password").value;
+  let newUser = {username, email, password}
+  console.log(newUser)
+  axios.post(baseUrl, newUser)
 
+  loginCard.innerHTML = `
+    <h1>Account Created!</h1>
+    <p>Your student account has been successfully created.</p>
+    <div style="text-align: center; margin-top: 2rem;">
+      <button onclick="location.reload()">Back to Login</button>
+    </div>
+  `;
+
+}
 

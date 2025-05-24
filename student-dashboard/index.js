@@ -90,7 +90,8 @@ function handleSubmit(e) {
     request.then((response) => {
         editId = null;
         form.reset();
-        document.querySelector("button[type='submit']").textContent = "Submit";
+        document.querySelector("button[type='submit']").textContent = "Add Student";
+        document.querySelector(".form-heading").textContent = "Add New Student";
         console.log(response);
         loadStudents();
         
@@ -116,7 +117,7 @@ function editStudent(id) {
         document.getElementById("mechanical").value = student.marks.mechanical;
 
         document.querySelector("button[type='submit']").textContent = "Update";
-
+        document.querySelector(".form-heading").textContent = "Update Student Details";
         editId = id;
         
         document.querySelector(".form-container").scrollIntoView({ behavior: "smooth" });

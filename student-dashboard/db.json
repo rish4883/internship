@@ -31,6 +31,22 @@
         "mechanical": "99"
       },
       "id": "2dd9"
+    },
+    {
+      "fName": "Shetty",
+      "lName": "Prasanna",
+      "srn": "R220",
+      "email": "pshtty@gmail.com",
+      "department": "ece",
+      "marks": {
+        "math": "88",
+        "chem": "99",
+        "kannada": "70",
+        "iot": "85",
+        "electronics": "87",
+        "mechanical": "99"
+      },
+      "id": "1ea1"
     }
   ]
 }

@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #fcd1e3, #d5a3ff, #ffb3c6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.login-card {
+  background-color: #fff;
+  padding: 5rem 3.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(222, 72, 150, 0.2);
+  width: 100%;
+  max-width: 500px;
+  border-top: 5px solid #e91e63;
+  box-sizing: border-box;
+}
+
+.login-card h1 {
+  margin: 0;
+  font-size: 26px;
+  color: #b4005c;
+}
+
+.login-card p {
+  font-size: 14px;
+  color: #933a63;
+}
+
+.form-group {
+  margin: 1.2rem 0;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #b4005c;
+}
+
+.form-group i.fa-user,
+.form-group i.fa-lock,
+.form-group i.fa-envelope {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  color: #b4005c;
+  z-index: 1;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 2.5rem 0.75rem 2.5rem;
+  border: 1px solid #f4a3b6;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff0f5;
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  cursor: pointer;
+  color: #b4005c;
+  z-index: 2;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 0.8rem;
+}
+
+button:hover {
+  background-color: #c2185b;
+}
+
+.forgot-password {
+  text-align: center;
+  margin: 1rem 0 0.5rem;
+  font-size: 14px;
+  color: #7a2d48;
+}
+
+.forgot-password a {
+  color: #e91e63;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.create-account button {
+  background-color: #d81b60;
+}
+
+.create-account button:hover {
+  background-color: #ad1457;
+}

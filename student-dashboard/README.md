@@ -13,6 +13,8 @@
 - Use the edit button which automatically takes You back to the prefilled form with current details and press update button to store
 - Use the delete button and confirm to permenantly delete the student record
 
+### [Video Demo](https://drive.google.com/file/d/1eHsOkUB_TS344UHZL3GKTcPg4TVEq2Bf/view?usp=drive_link)
+
 ### Notes on Tech Concepts
 
 - Used javascript DOM manipulation and event handling to validate and capture form data

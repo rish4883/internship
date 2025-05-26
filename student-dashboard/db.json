@@ -1,38 +1,6 @@
 {
   "students": [
     {
-      "fName": "S",
-      "lName": "Rishabh",
-      "srn": "214",
-      "email": "rishabh4883@gmail.com",
-      "department": "eee",
-      "marks": {
-        "math": "10",
-        "chem": "20",
-        "kannada": "30",
-        "iot": "40",
-        "electronics": "50",
-        "mechanical": "60"
-      },
-      "id": "987e"
-    },
-    {
-      "fName": "Rishabh",
-      "lName": "S",
-      "srn": "R20EN214",
-      "email": "rishabh@gm.com",
-      "department": "civil",
-      "marks": {
-        "math": "11",
-        "chem": "22",
-        "kannada": "99",
-        "iot": "99",
-        "electronics": "99",
-        "mechanical": "99"
-      },
-      "id": "2dd9"
-    },
-    {
       "fName": "Shetty",
       "lName": "Prasanna",
       "srn": "R220",
@@ -47,6 +15,22 @@
         "mechanical": "99"
       },
       "id": "1ea1"
+    },
+    {
+      "fName": "Rish",
+      "lName": "S",
+      "srn": "R20EN214",
+      "email": "rishabh4883@gmail.com",
+      "department": "ece",
+      "marks": {
+        "math": "87",
+        "chem": "88",
+        "kannada": "99",
+        "iot": "95",
+        "electronics": "93",
+        "mechanical": "85"
+      },
+      "id": "2eda"
     }
   ],
   "login": [

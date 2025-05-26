@@ -3,6 +3,7 @@
 ### Branch project/resume contains the code for building HTML resume
 
 The work for this is in the resume directory
+
 ---
 
 ### Branch learn/js has the practice javascript programs
@@ -16,9 +17,10 @@ The branches have not been merged yet as its still WIP
 ---
 ### Project Student Dash Board created with branch project/student
 
-Project has been completed
+Project has been completed and demo video updated
 
 ---
 
 ### New project login page created with branch project/login
 
+Completed the project.

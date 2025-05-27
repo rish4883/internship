@@ -35,16 +35,10 @@
   ],
   "login": [
     {
-      "username": "rish4883",
-      "email": "rishabh4883@gmail.com",
-      "password": "rishabh2001",
-      "id": "9d3a"
-    },
-    {
-      "id": "ed23",
+      "id": "f223",
       "username": "rish",
-      "email": "r@gm.com",
-      "password": "123"
+      "email": "rishabh4883@gmail.com",
+      "password": "rish123"
     }
   ]
 }

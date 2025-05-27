@@ -1,2 +1,5 @@
-note1 - my fav color is red
+note1 - my fav color is vlue
 note2 - i love cars
+My new note - this is m favourite note
+newNote - my new note
+note 5 - note number 5 my new note

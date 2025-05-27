@@ -44,9 +44,23 @@ rl.question('Enter your option(1/2/3/4/5): ', (ans) => {
 function addNewNote() {
     rl.question('Enter Title of the note: ', (title) => {
         rl.question('Enter the note: ', (note) => {
-            let fullNote = `${title}-${note}\n`;
+            let fullNote = `${title} - ${note}\n`;
             fs.appendFileSync(noteFilePath, fullNote);
             rl.close();
         })
     });    
+}
+
+function viewAll() {
+    console.log('\nYour notes:-');
+    const notesData = fs.readFileSync(noteFilePath, 'utf8');
+    const notes = notesData.split('\n');
+    notes.splice(-1, 1)
+    // console.log(notes);
+    notes.forEach((note, index) => {
+        // noteSeperated = note.split('-');
+        console.log(`${index + 1}. ${note}`);
+    });
+    console.log('\n');
+    
 }

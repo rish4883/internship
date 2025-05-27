@@ -1,5 +1,15 @@
 const {stdin, stdout} = require('process');
 const readline = require('readline');
+const eventEmitter = require('node:events');
+
+const emitter = new eventEmitter();
+
+emitter.on('reminder', (msg) => {
+    console.log('**************************************');
+    console.log(`REMINDER: ${msg}`);
+    console.log('**************************************');
+    process.exit(0)
+});
 
 
 
@@ -18,16 +28,16 @@ rl.question('Enter the reminder message: ', (message) => {
     }
     rl.question('Enter the time in seconds: ', (time) => {
         time = Number(time);
-        if (time <= 0) {
+        if (time <= 0 || isNaN(time)) {
                 console.warn('Time cannot be less than 0');
                 process.exit(1);
             }
         rl.question('Enter the method you want to use for scheduling (callback/promise/async): ', (method) => {
-            // method = method.toLowerCase();
-            // if ((method == 'callback' || method == 'promise' || method == 'async')) {
-            //     console.log(`${method} is not valid.\nThe method should be one of [callback/promise/async]`);
-            //     process.exit();
-            // }
+            method = method.trim().toLowerCase();
+            if (!(method == 'callback' || method == 'promise' || method == 'async')) {
+                console.log(`\n${method} IS NOT A VALID OPTION.\nThe method should be one of [callback/promise/async]\n`);
+                process.exit();
+            }
             console.log(`\nYou will be reminded after ${time} seconds\n`);
             
             
@@ -36,17 +46,13 @@ rl.question('Enter the reminder message: ', (message) => {
             
             switch(method) {
                 case 'callback': useCallbackMethod(message, time, (msg) => {
-                    console.log('**************************************');
-                    console.log(`REMINDER: ${message}`);
-                    console.log('**************************************');
+                    emitter.emit('reminder', msg)
                 }); 
                     break;
 
                 case 'promise': 
                     usePromiseMethod(message, time).then((msg) => {
-                    console.log('**************************************');
-                    console.log(`REMINDER: ${message}`);
-                    console.log('**************************************');
+                        emitter.emit('reminder', msg)
                     });
                     break;
                 case 'async': useAsyncMethod(message, time);
@@ -80,7 +86,8 @@ async function useAsyncMethod(message, time) {
     
     const res = await usePromiseMethod(message, time);
 
-    console.log('**************************************');
-    console.log(`REMINDER: ${res}`);
-    console.log('**************************************');
+    emitter.emit('reminder', res)
 }
+
+
+

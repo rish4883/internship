@@ -21,48 +21,64 @@ const rl = readline.createInterface({
 
 console.log('Welcome to the reminder app');
 
-rl.question('Enter the reminder message: ', (message) => {
-    if (!message) {
-        console.log('Message cannot be empty');
-        process.exit(1);
+let message, time, method;
+
+function askMessage() {
+    rl.question('Enter the reminder message: ', (input) => {
+        if (!input.trim()) {
+            console.log('Message cannot be empty.');
+            return askMessage();
+        }
+        message = input.trim();
+        askTime();
+    });
+}
+
+function askTime() {
+    rl.question('⏱Enter the time in seconds: ', (input) => {
+        const num = Number(input);
+        if (isNaN(num) || num <= 0) {
+            console.log('Time must be a number greater than 0.');
+            return askTime();
+        }
+        time = num;
+        askMethod();
+    });
+}
+
+function askMethod() {
+    rl.question('Enter the method you want to use for scheduling (callback/promise/async): ', (input) => {
+        const val = input.trim().toLowerCase();
+        if (!(input == 'callback' || input == 'promise' || input == 'async')) {
+            console.log('Invalid method. Use one of: callback, promise, async.');
+            return askMethod();
+        }
+        method = val;
+        rl.close();
+        scheduleReminder();
+    });
+}
+
+askMessage();
+
+function scheduleReminder() {
+    console.log(`\nYou will be reminded in ${time} seconds using "${method}" method.\n`);
+
+    switch (method) {
+        case 'callback':
+            useCallbackMethod(message, time, (msg) => emitter.emit('reminder', msg));
+            break;
+        case 'promise':
+            usePromiseMethod(message, time).then((msg) => emitter.emit('reminder', msg));
+            break;
+        case 'async':
+            useAsyncMethod(message, time);
+            break;
     }
-    rl.question('Enter the time in seconds: ', (time) => {
-        time = Number(time);
-        if (time <= 0 || isNaN(time)) {
-                console.warn('Time cannot be less than 0');
-                process.exit(1);
-            }
-        rl.question('Enter the method you want to use for scheduling (callback/promise/async): ', (method) => {
-            method = method.trim().toLowerCase();
-            if (!(method == 'callback' || method == 'promise' || method == 'async')) {
-                console.log(`\n${method} IS NOT A VALID OPTION.\nThe method should be one of [callback/promise/async]\n`);
-                process.exit();
-            }
-            console.log(`\nYou will be reminded after ${time} seconds\n`);
-            
-            
-            // userInput = {message, time, method};
-            // console.log(time);
-            
-            switch(method) {
-                case 'callback': useCallbackMethod(message, time, (msg) => {
-                    emitter.emit('reminder', msg)
-                }); 
-                    break;
+}
 
-                case 'promise': 
-                    usePromiseMethod(message, time).then((msg) => {
-                        emitter.emit('reminder', msg)
-                    });
-                    break;
-                case 'async': useAsyncMethod(message, time);
-                    break; 
-            }
 
-            rl.close()
-        })
-    })
-});
+
 
 function useCallbackMethod(message, time, callback) {
     console.log('Using callback...\n');
@@ -88,6 +104,3 @@ async function useAsyncMethod(message, time) {
 
     emitter.emit('reminder', res)
 }
-
-
-

@@ -1,0 +1,11 @@
+[
+  {
+    "id": "aaa",
+    "name": "Nike shoe",
+    "description": "Super du comfortable shoes to wear",
+    "category": "Footwear",
+    "price": 500,
+    "stock": 20,
+    "status": "in stock"
+  }
+]

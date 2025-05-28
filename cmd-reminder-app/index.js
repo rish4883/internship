@@ -35,7 +35,7 @@ function askMessage() {
 }
 
 function askTime() {
-    rl.question('⏱Enter the time in seconds: ', (input) => {
+    rl.question('Enter the time in seconds: ', (input) => {
         const num = Number(input);
         if (isNaN(num) || num <= 0) {
             console.log('Time must be a number greater than 0.');
@@ -49,7 +49,7 @@ function askTime() {
 function askMethod() {
     rl.question('Enter the method you want to use for scheduling (callback/promise/async): ', (input) => {
         const val = input.trim().toLowerCase();
-        if (!(input == 'callback' || input == 'promise' || input == 'async')) {
+        if (!(val == 'callback' || val == 'promise' || val == 'async')) {
             console.log('Invalid method. Use one of: callback, promise, async.');
             return askMethod();
         }

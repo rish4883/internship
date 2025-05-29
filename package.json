@@ -6,5 +6,8 @@
   },
   "scripts": {
     "server": "json-server -p 3001 db.json"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }

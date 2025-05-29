@@ -12,6 +12,9 @@
             box-sizing: border-box;
         }
 
+        a {
+            text-decoration: none;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;
@@ -179,6 +182,11 @@
             min-width: 120px;
         }
 
+        .btn-disable {
+            background: #b8b8b8;
+            color: white;
+        }
+
         .btn-primary {
             background: #27ae60;
             color: white;
@@ -190,14 +198,16 @@
         }
 
         .btn-secondary {
-            background: #95a5a6;
+            background: #27ae60;
             color: white;
         }
 
         .btn-secondary:hover {
-            background: #7f8c8d;
+            background: #229954;
             transform: translateY(-2px);
         }
+
+
 
         .help-text {
             font-size: 12px;
@@ -278,7 +288,7 @@
         </div>
         
         <div class="nav-section">
-            <a href="#" class="nav-btn" onclick="goToProductTable()">View Product Table</a>
+            <button class="nav-btn">View Product Table</button>
         </div>
 
         <div class="form-container">
@@ -286,7 +296,7 @@
                 Product added successfully!
             </div>
 
-            <form id="productForm" onsubmit="submitProduct(event)">
+            <form id="productForm">
                 <div class="form-group">
                     <label for="productName">Product Name <span class="required">*</span></label>
                     <input type="text" id="productName" name="productName" required>
@@ -344,7 +354,7 @@
                 </div>
 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">Add Product</button>
+                    <button type="submit" class="btn btn-disable" id="submit-btn">Add Product</button>
                     <button type="button" class="btn btn-secondary" onclick="resetForm()">Clear Form</button>
                 </div>
             </form>
@@ -352,12 +362,29 @@
     </div>
 
     <script>
+        const form = document.getElementById('productForm');
+        const btn = document.getElementById('submit-btn')
+        function checkFormFilled() {
+            const inputs = form.querySelectorAll('input[required]');
+            const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+            if (allFilled)
+                btn.classList.add('btn-primary');
+            else
+                btn.classList.remove('btn-primary')
+        }
+        form.querySelectorAll('input[required]').forEach(input => {
+            input.addEventListener('input', checkFormFilled);
+        });
+
+        form.addEventListener('submit', submitProduct)
         function submitProduct(event) {
             event.preventDefault();
+            
             
             // Get form data
             const formData = new FormData(event.target);
             const productData = {
+                id: makeid(5),
                 name: formData.get('productName'),
                 description: formData.get('description'),
                 category: formData.get('category'),
@@ -365,7 +392,8 @@
                 stock: parseInt(formData.get('stock')),
                 status: formData.get('status')
             };
-
+            console.log("product");
+            
             // Here you would typically send the data to your backend
             axios.post('/add-product', productData).then((res) => {
                 // Display Success message
@@ -378,6 +406,8 @@
                     successMessage.style.display = 'none';
                 }, 3000);
                 resetForm();
+            }).catch((err) => {
+                console.log(err)
             })
         }
 
@@ -385,12 +415,12 @@
             document.getElementById('productForm').reset();
             document.getElementById('inStock').checked = true;
         }
-
+        document.querySelector('.nav-btn').addEventListener("click", goToProductTable);
         function goToProductTable() {
             // In a real application, this would navigate to the product table page
             // For demo purposes, we'll show an alert
-            alert('Navigating to Product Table page...\n\nIn a real application, this would redirect to your product table page.');
-            
+            // alert('Navigating to Product Table page...\n\nIn a real application, this would redirect to your product table page.');
+            window.location.href = '/product-view';
             // Example of how you might navigate:
             // window.location.href = 'product-table.html';
         }
@@ -417,6 +447,17 @@
                 target.style.borderColor = '#e74c3c';
             }
         });
+
+
+        function makeid(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
     </script>
 </body>
 </html>

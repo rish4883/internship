@@ -40,6 +40,31 @@
             font-weight: 600;
         }
 
+                .nav-section {
+            background: #34495e;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
         .table-container {
             overflow-x: auto;
             padding: 20px;
@@ -197,6 +222,45 @@
                 font-size: 10px;
             }
         }   
+
+
+        #confirm-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-backdrop {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+        position: relative;
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        text-align: center;
+        max-width: 400px;
+        width: 90%;
+    }
+
+    .modal-actions {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
     </style>
 </head>
 <body>
@@ -204,7 +268,9 @@
         <div class="header">
             <h1>Product Inventory Management</h1>
         </div>
-        
+<div class="nav-section">
+            <button class="nav-btn">Add new</button>
+        </div>
         <div class="table-container">
             <table>
                 <thead>
@@ -256,20 +322,31 @@
         </div>
     </div>
 
+    <div id="confirm-modal" style="display:none;">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+        <p id="modal-message">Are you sure you want to delete?</p>
+        <div class="modal-actions">
+            <button id="confirm-delete-btn" class="btn btn-delete">Yes, Delete</button>
+            <button id="cancel-delete-btn" class="btn btn-edit">Cancel</button>
+        </div>
+    </div>
+    </div>
+
     <script>
         function editProduct(productId) {
-            alert(`Editing product with ID: ${productId}`);
+            window.location.href = `/edit-product/${productId}`;
         }
 
         // Delete product with axios delete http method using product ID
-        function deleteProduct(productId, productName) {
-            if (confirm(`Are you sure you want to delete product: ${productName}?`)) {
-                alert(`Deleting product with ID: ${productId}`);
-                axios.delete(`/products/${productId}`).then(res => {
-                    loadProducts();
-                });
-            }
-        }
+        // function deleteProduct(productId, productName) {
+        //     if (confirm(`Are you sure you want to delete product: ${productName}?`)) {
+        //         alert(`Deleting product with ID: ${productId}`);
+        //         axios.delete(`/products/${productId}`).then(res => {
+        //             loadProducts();
+        //         });
+        //     }
+        // }
 
         // function to load products using axios http get method. Create each table row and append to the table
         function loadProducts() {
@@ -291,7 +368,7 @@
                         </td>
                         <td class="actions">
                             <button class="btn btn-delete" onclick="deleteProduct('${product.id}', '${product.name}')">Delete</button>
-                            <button class="btn btn-edit" >Edit</button>
+                            <button class="btn btn-edit" onclick="editProduct('${product.id}')">Edit</button>
                         </td>
                     `;
                     tbody.appendChild(tr)
@@ -300,7 +377,47 @@
             })
         }
 
+        document.querySelector('.nav-btn').addEventListener('click', () => {
+            window.location.href = '/';
+        });
+
         loadProducts();
+
+
+
+
+
+
+
+
+    // let productToDelete = null;
+
+    function deleteProduct(productId, productName) {
+        // productToDelete = { productId, productName };
+        document.getElementById('modal-message').innerText = `Are you sure you want to delete product: ${productName}?`;
+        document.getElementById('confirm-modal').style.display = 'flex';
+        console.log('confirm delete');
+        
+        document.getElementById('confirm-delete-btn').addEventListener('click', function () {
+        console.log('deleting..' + productName);
+            axios.delete(`/products/${productId}`).then(() => {
+                loadProducts();
+                closeModal();
+            });
+        
+    });
+
+    }
+
+    
+
+    document.getElementById('cancel-delete-btn').addEventListener('click', closeModal);
+
+    function closeModal() {
+        document.getElementById('confirm-modal').style.display = 'none';
+        productToDelete = null;
+    }
+
 
     </script>
 </body>

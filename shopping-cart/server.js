@@ -14,7 +14,7 @@ function serveStaticFile(res, filename) {
 
 
 
-const server = http.createServer((req, res) => {
+const server = http.createServer((req, res) => {    
     // root url serve the product form
     if (req.url == '/') {
         serveStaticFile(res, 'product-form.html');
@@ -34,7 +34,7 @@ const server = http.createServer((req, res) => {
     }
 
     // add new entry
-    else if (req.method == 'POST' && req.url == '/add-products') {
+    else if (req.method == 'POST' && req.url == '/add-product') {
         let body = '';
 
         req.on('data', (chunk) => {
@@ -49,20 +49,21 @@ const server = http.createServer((req, res) => {
                 products.push(newProduct);
 
                 fs.writeFile('products.json', JSON.stringify(products, null, 2), err => {
-            if (err) {
-              return send500(res);
-            }
-            res.end(JSON.stringify({ message: 'Product added successfully' }));
-            });
+                    if (err) {
+                        return send500(res);
+                    }
+                    res.end(JSON.stringify({ message: 'Product added successfully' }));
+                });
             
-        });
-    })
-}
+            });
+        })
+    }   
 
     // delete
     else if (req.method == 'DELETE' && req.url.startsWith('/products/')) {
         const deleteId = req.url.split('/')[2];
-
+        console.log(req.url);
+        
         fs.readFile('products.json', (err, data) => {
             const products = JSON.parse(data);
             const newProducts = products.filter(p => p.id != deleteId);
@@ -72,6 +73,17 @@ const server = http.createServer((req, res) => {
                 res.end(JSON.stringify({ message: 'Product deleted' }));
             })
         });
+    }
+
+    else if (req.url.startsWith('/edit-product/')) {
+        const editId = req.url.split('/')[2];
+
+        fs.readFile('products.json', (err,data) => {
+            const products = JSON.parse(data);
+
+            const eidtProduct = products.find(p => p.id == editId);
+            
+        })
     }
 });
 

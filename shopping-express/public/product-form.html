@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .nav-section {
+            background: #34495e;
+            padding: 15px 20px;
+            text-align: center;
+        }
+
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .form-container {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+            background: #fdfdfd;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        .status-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .radio-option label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .btn-disable {
+            background: #b8b8b8;
+            color: white;
+        }
+
+        .btn-primary {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #229954;
+            transform: translateY(-2px);
+        }
+
+
+
+        .help-text {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 4px;
+        }
+
+        .price-input {
+            position: relative;
+        }
+
+        .price-input::before {
+            content: '₹';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8c8d;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .price-input input {
+            padding-left: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .form-row .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .status-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Add New Product</h1>
+            <p>Enter product information to add to inventory</p>
+        </div>
+        
+        <div class="nav-section">
+            <button class="nav-btn">View Product Table</button>
+        </div>
+
+        <div class="form-container">
+            <div class="success-message" id="successMessage">
+                Product added successfully!
+            </div>
+
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="name">Product Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="help-text">Enter the full product name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Product Description <span class="required">*</span></label>
+                    <textarea id="description" name="description" required placeholder="Describe the product"></textarea>
+                    <div class="help-text">Provide a detailed description of the product</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Clothing">Clothing</option>
+                            <option value="Shoes">Shoes</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Watches">Watches</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price <span class="required">*</span></label>
+                        <div class="price-input">
+                            <input type="number" id="price" name="price" step="0.01" min="0" required>
+                        </div>
+                        <div class="help-text">Enter price in INR</div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="stock">Stock Quantity <span class="required">*</span></label>
+                        <input type="number" id="stock" name="stock" min="0" required>
+                        <div class="help-text">Number of items in inventory</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Status <span class="required">*</span></label>
+                        <div class="status-group">
+                            <div class="radio-option">
+                                <input type="radio" id="inStock" name="status" value="In Stock" checked>
+                                <label for="inStock">In Stock</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="outOfStock" name="status" value="Out of Stock">
+                                <label for="outOfStock">Out of Stock</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-disable" id="submit-btn">Add Product</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('productForm');
+        const btn = document.getElementById('submit-btn')
+        // check if all inputs are filled or not
+        function checkFormFilled() {
+            const inputs = form.querySelectorAll('input[required]');
+            const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+            if (allFilled)
+                btn.classList.add('btn-primary');
+            else
+                btn.classList.remove('btn-primary')
+        }
+        // add the input fill check event listener to all input fields
+        form.querySelectorAll('input[required]').forEach(input => {
+            input.addEventListener('input', checkFormFilled);
+        });
+
+
+        // form submission
+        form.addEventListener('submit', submitProduct)
+        function submitProduct(event) {
+            event.preventDefault();
+            
+            console.log('Form submitted ' + event.target);
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            // const productData = Object.fromEntries(formData.entries()); 
+            const productData = {
+                name: formData.get('name'),
+                description: formData.get('description'),
+                category: formData.get('category'),
+                price: parseFloat(formData.get('price')),
+                stock: parseInt(formData.get('stock')),
+                status: formData.get('status')
+            };
+            console.log("product: " + productData.name);
+            
+            // Use axios post to send the new product to the backend
+            axios.post('/add-product', productData).then((res) => {
+                // Display Success message
+                console.log("axios senddtttt");
+                
+                const successMessage = document.getElementById('successMessage');
+                successMessage.style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+
+                resetForm();
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+        // end of form subission
+
+        
+        function resetForm() {
+            document.getElementById('productForm').reset();
+            document.getElementById('inStock').checked = true;
+        }
+
+
+        document.querySelector('.nav-btn').addEventListener("click", goToProductTable);
+        function goToProductTable() {
+            window.location.href = '/product-view';
+        }
+
+        // Auto-update status based on stock quantity
+        document.getElementById('stock').addEventListener('input', function() {
+            const stockValue = parseInt(this.value);
+            const inStockRadio = document.getElementById('inStock');
+            const outOfStockRadio = document.getElementById('outOfStock');
+            
+            if (stockValue === 0) {
+                outOfStockRadio.checked = true;
+            } else if (stockValue > 0) {
+                inStockRadio.checked = true;
+            }
+        });
+
+        // Form validation
+        document.getElementById('productForm').addEventListener('input', function(event) {
+            const target = event.target;
+            if (target.checkValidity()) {
+                target.style.borderColor = '#27ae60';
+            } else {
+                target.style.borderColor = '#e74c3c';
+            }
+        });
+
+    </script>
+</body>
+</html>
